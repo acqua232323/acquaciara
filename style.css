@@ -1,0 +1,217 @@
+:root {
+  --oro: #C9A84C;
+  --oro-chiaro: #E8D5A3;
+  --scuro: #1a1a1a;
+  --testo: #3a3530;
+  --bianco: #faf8f4;
+  --grigio: #f0ece4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Raleway', sans-serif; color: var(--testo); background: var(--bianco); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  background: rgba(26,26,26,0.95); backdrop-filter: blur(10px);
+  padding: 15px 40px; display: flex; align-items: center;
+  justify-content: space-between; transition: padding 0.3s;
+}
+.nav-logo img { height: 55px; }
+.nav-links { display: flex; gap: 35px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.85); text-decoration: none;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 500; transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--oro); }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 5px;
+}
+.hamburger span { width: 25px; height: 2px; background: white; display: block; transition: all 0.3s; }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0;
+  background: rgba(26,26,26,0.97); z-index: 2000;
+  flex-direction: column; align-items: center; justify-content: center; gap: 35px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: white; text-decoration: none; font-size: 22px;
+  letter-spacing: 3px; text-transform: uppercase; font-family: 'Playfair Display', serif;
+}
+.mobile-menu a:hover { color: var(--oro); }
+.mobile-close {
+  position: absolute; top: 25px; right: 30px;
+  color: white; font-size: 30px; cursor: pointer; background: none; border: none;
+}
+
+/* ── HERO ── */
+.hero {
+  height: 100vh; position: relative;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/panorama.jpg');
+  background-size: cover; background-position: center;
+  transform: scale(1.05); animation: zoomOut 8s ease forwards;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.8) 100%);
+}
+@keyframes zoomOut { from { transform: scale(1.05); } to { transform: scale(1.0); } }
+.hero-content {
+  position: relative; z-index: 1; text-align: center;
+  color: white; padding: 0 20px; animation: fadeUp 1.2s ease 0.3s both;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.hero-label { font-size: 12px; letter-spacing: 5px; text-transform: uppercase; color: var(--oro); margin-bottom: 20px; font-weight: 600; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 8vw, 90px); line-height: 1.1; margin-bottom: 20px; font-weight: 700; }
+.hero-sub { font-size: 16px; letter-spacing: 2px; opacity: 0.85; margin-bottom: 40px; font-weight: 300; }
+.hero-divider { width: 60px; height: 2px; background: var(--oro); margin: 0 auto 40px; }
+.scroll-down {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  z-index: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 8px; color: rgba(255,255,255,0.6); font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase; animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+.scroll-down::after { content: ''; width: 1px; height: 30px; background: rgba(255,255,255,0.4); }
+
+/* ── BUTTONS ── */
+.btn-oro {
+  display: inline-block; padding: 15px 40px;
+  border: 1px solid var(--oro); color: var(--oro);
+  text-decoration: none; font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; font-weight: 600; transition: all 0.3s; margin: 0 8px;
+}
+.btn-oro:hover { background: var(--oro); color: var(--scuro); }
+.btn-pieno { background: var(--oro); color: var(--scuro); }
+.btn-pieno:hover { background: transparent; color: var(--oro); }
+
+/* ── SEZIONI GENERICHE ── */
+section { padding: 100px 40px; }
+.section-label { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--oro); margin-bottom: 15px; font-weight: 600; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); margin-bottom: 20px; line-height: 1.2; }
+.section-divider { width: 50px; height: 2px; background: var(--oro); margin: 0 auto 40px; }
+.section-divider.left { margin: 20px 0 40px; }
+
+/* ── CHI SIAMO ── */
+#chi-siamo { background: var(--bianco); }
+.chi-siamo-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.chi-siamo-text p { font-size: 16px; line-height: 1.9; color: #5a5248; margin-bottom: 20px; font-weight: 300; }
+.chi-siamo-text .highlight { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--testo); margin-bottom: 30px; line-height: 1.5; }
+.chef-box { margin-top: 40px; padding: 25px; border-left: 3px solid var(--oro); background: var(--grigio); }
+.chef-box .chef-nome { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
+.chef-box p { font-size: 14px; line-height: 1.7; margin-bottom: 0; }
+.chi-siamo-img img { width: 100%; height: 480px; object-fit: cover; }
+
+/* ── PANORAMA STRIP ── */
+.panorama-strip {
+  height: 420px; position: relative;
+  background-image: url('images/panorama.jpg');
+  background-size: cover; background-position: center;
+  background-attachment: fixed;
+  display: flex; align-items: center; justify-content: center;
+}
+.panorama-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+.panorama-text { position: relative; z-index: 1; text-align: center; color: white; padding: 0 20px; }
+.panorama-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 48px); font-style: italic; }
+.panorama-text p { margin-top: 15px; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: var(--oro); }
+
+/* ── MENU ── */
+#menu { background: var(--grigio); }
+.menu-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.menu-intro { font-size: 16px; line-height: 1.9; color: #5a5248; margin-bottom: 50px; font-weight: 300; }
+.menu-box { background: white; padding: 50px; border-top: 3px solid var(--oro); box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+.menu-box h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 12px; }
+.menu-box p { color: #7a7268; font-size: 15px; line-height: 1.8; margin-bottom: 30px; }
+
+/* ── IL RISTORANTE ── */
+#il-ristorante { background: var(--bianco); }
+.ristorante-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.ristorante-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+.rist-card { overflow: hidden; }
+.rist-card img { width: 100%; height: 280px; object-fit: cover; transition: transform 0.6s; display: block; }
+.rist-card:hover img { transform: scale(1.05); }
+.rist-card-text { padding: 25px 20px; background: white; border-bottom: 3px solid var(--oro); }
+.rist-card-text h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 10px; }
+.rist-card-text p { font-size: 14px; color: #7a7268; line-height: 1.7; }
+
+/* ── CONTATTI ── */
+#contatti { background: var(--scuro); color: white; }
+.contatti-inner { max-width: 1100px; margin: 0 auto; }
+.contatti-inner .section-title { color: white; }
+.contatti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; }
+.info-block { margin-bottom: 35px; }
+.info-block h4 { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); margin-bottom: 12px; }
+.info-block p, .info-block a { font-size: 16px; color: rgba(255,255,255,0.75); text-decoration: none; line-height: 1.8; }
+.info-block a:hover { color: var(--oro); }
+.orari-table { width: 100%; }
+.orari-table td { padding: 6px 0; font-size: 15px; color: rgba(255,255,255,0.75); }
+.orari-table td:first-child { font-weight: 600; color: var(--oro-chiaro); width: 130px; }
+.mappa { width: 100%; height: 300px; border: 0; filter: grayscale(30%); margin-top: 20px; }
+.form-prenota { background: rgba(255,255,255,0.05); padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+.form-prenota h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 25px; color: white; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--oro); margin-bottom: 8px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; background: transparent; border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 0; color: white; font-family: 'Raleway', sans-serif;
+  font-size: 15px; outline: none; transition: border-color 0.3s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-bottom-color: var(--oro); }
+.form-group select option { background: var(--scuro); }
+.form-group textarea { height: 80px; resize: none; }
+.btn-submit {
+  width: 100%; padding: 16px; background: var(--oro); border: none;
+  color: var(--scuro); font-family: 'Raleway', sans-serif;
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 10px;
+}
+.btn-submit:hover { background: var(--oro-chiaro); }
+
+/* ── FOOTER ── */
+footer { background: #111; color: rgba(255,255,255,0.4); text-align: center; padding: 30px; font-size: 12px; letter-spacing: 1px; }
+footer span { color: var(--oro); }
+
+/* ── STICKY BAR MOBILE ── */
+.sticky-bar {
+  display: none; position: fixed; bottom: 0; left: 0; width: 100%;
+  background: var(--scuro); z-index: 999; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.sticky-bar a {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: 12px 0; color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 10px; letter-spacing: 1px; text-transform: uppercase; gap: 4px;
+}
+.sticky-bar a svg { width: 20px; height: 20px; }
+.sticky-bar a:hover { color: var(--oro); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .chi-siamo-grid { grid-template-columns: 1fr; }
+  .ristorante-grid { grid-template-columns: 1fr; }
+  .contatti-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 70px 25px; }
+  nav { padding: 15px 25px; }
+  .sticky-bar { display: flex; }
+  body { padding-bottom: 65px; }
+  .panorama-strip { background-attachment: scroll; }
+  .hero-bg { background-attachment: scroll; }
+}
